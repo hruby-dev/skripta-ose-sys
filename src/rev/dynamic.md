@@ -14,9 +14,27 @@ Pro dynamickou analýzu se používají debuggery. V této části budeme pracov
 
 GEF přidává:
 
-* lepší výpis registrů
-* přehlednější práci s pamětí
-* užitečné zkratky pro reversing
+- lepší výpis registrů
+- přehlednější práci s pamětí
+- užitečné zkratky pro reversing
+
+Další velmi užitečné nástroje:
+
+### strace
+
+```bash
+$ strace ./program
+```
+
+Sleduje, jak program komunikuje s jádrem (syscalls).
+
+### ltrace
+
+```bash
+$ ltrace ./program
+```
+
+Zobrazuje volání knihovních funkcí (např. `strcmp`, `printf`, `open`).
 
 ## Základy debugování
 
@@ -34,32 +52,44 @@ gef➤  run
 
 ### Breakpointy
 
-Breakpoint zastaví program na určité instrukci nebo funkci:
-
 ```bash
 gef➤  break main
 gef➤  break strcmp
 ```
 
-### Registry
+### next vs step
 
-Zobrazení registrů:
+```bash
+gef➤  next   # přeskočí funkce
+gef➤  step   # vstoupí do funkce
+```
+
+### Registry
 
 ```bash
 gef➤  info registers
 ```
 
-V GEF jsou registry automaticky zobrazeny při každém zastavení programu.
+Na Linuxu (x86-64, System V ABI):
+
+* `rdi` = 1. argument
+* `rsi` = 2. argument
+* `rax` = návratová hodnota
 
 ### Výpis funkcí
-
-Při prvotní orientaci v binárce je užitečné zobrazit seznam známých funkcí:
 
 ```bash
 gef➤  info functions
 ```
 
-Tento příkaz vypíše symboly, které má debugger k dispozici. V jednoduchých případech tak rychle najdeme například `main`, `strcmp`, `puts`, `exit` nebo další importované funkce, na které lze následně nastavit breakpoint.
+### Disassemble
+
+```bash
+gef➤  disassemble main
+```
+
+Umožní zobrazit assembler kód funkce, což je základ pro pochopení větvení programu.
+
 
 ## Ukázka: strcmp
 
