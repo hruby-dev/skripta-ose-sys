@@ -13,5 +13,5 @@
     - [Jazyk C]()
     - [Jazyk C++]()
     - [Jazyk Rust]()
-- [Reverse Engineering]()
+- [Reverse Engineering](./rev/intro_rev.md)
 - [Binary Exploitation]()
