@@ -61,8 +61,6 @@ ACCESS GRANTED
 
 Pomocí `strings` jsme byli schopni odhalit správné heslo bez znalosti zdrojového kódu.
 
----
-
 ## Dekompilace
 
 Technika `strings` je jednoduchá, ale ne vždy funguje – citlivé hodnoty mohou být skryté nebo generované dynamicky. V takovém případě využíváme dekompilaci.
@@ -84,11 +82,11 @@ Ghidra zobrazí:
 ### Ukázka dekompilovaného kódu
 
 ```c
-    if (strcmp(input, "TajneHeslo123!") == 0) {
-        puts("ACCESS GRANTED");
-    } else {
-        puts("Wrong password!");
-    }
+if (strcmp(input, "TajneHeslo123!") == 0) {
+    puts("ACCESS GRANTED");
+} else {
+    puts("Wrong password!");
+}
 ```
 
 Z dekompilovaného kódu lze snadno odvodit:
