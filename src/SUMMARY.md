@@ -14,4 +14,7 @@
     - [Jazyk C++]()
     - [Jazyk Rust]()
 - [Reverse Engineering](./rev/intro_rev.md)
+    - [Statická analýza](./rev/static.md)
+    - [Dynamická analýza](./rev/dynamic.md)
+    - [Techniky a tipy](./rev/tips_and_tricks.md)
 - [Binary Exploitation]()
