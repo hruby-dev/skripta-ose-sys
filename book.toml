@@ -4,5 +4,4 @@ authors = ["František Hrubý", "Samuel Šidlichovský"]
 language = "cs"
 
 [output.html]
-fold.enable = true
-fold.level = 1
+mathjax-support = true
