@@ -1,6 +1,7 @@
 # Summary
 [Welcome 👋](./welcome.md)
-- [Výroková logika]()
+- [Výroková logika](./vyrokova_logika/intro.md)
+    - [Logické brány a obvody]()
     - [Booleova Algebra](./vyrokova_logika/b-algebra.md)
 - [Principy Počítačů](./computing_principles.md)
 - [Operační Systémy](./operating_systems/os.md)
