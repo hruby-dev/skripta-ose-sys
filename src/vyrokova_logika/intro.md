@@ -70,7 +70,7 @@ Implikace vyjadřuje vzah "if A, then B", kde z pravdivosti prvního výroku vyp
 p \rightarrow q
 \\]
 
-| (p) | (q) | (p \rightarrow q) |
+| \\(p\\) | \\(q\\) | \\(p \rightarrow q\\) |
 | --- | --- | ----------------- |
 | 0   | 0   | 1                 |
 | 0   | 1   | 1                 |
