@@ -62,9 +62,7 @@ $ cyclic 200
 aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabe...
 ```
 
----
-
-## Crash a nalezení offsetu
+### Crash a nalezení offsetu
 
 Spustíme program v GDB a pošleme pattern:
 
@@ -91,7 +89,7 @@ $ cyclic -l 0x6161616f
 
 Tento výstup znamená že stack offset je 56.
 
-## Stack padding
+### Stack padding
 
 Abychom například změnili návratovou adresu, musíme vyplnit buffer přesně správným množstvím dat:
 
