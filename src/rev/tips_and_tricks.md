@@ -17,35 +17,36 @@ Nejčastější operace jsou:
 
 Při analýze je důležité pamatovat na to, že se často pracuje pouze s jedním bajtem, tedy v rozsahu `0x00` až `0xff`.
 
+> [!NOTE]
+> V jazyce C dochází při práci s typem char nebo unsigned char k implicitnímu přetečení (wrap-around). V jazycích jako Python je však nutné toto chování simulovat explicitně, typicky pomocí maskování & 0xff.
+
 ### Sčítání nad bajty
 
 Příklad transformace:
 
 ```c
-out[i] = (input[i] + 0x10) & 0xff;
+out[i] = input[i] + key;
 ```
 
-Ekvivalent v Pythonu:
+Reverzní operace:
 
 ```python
 cipher = [0x81, 0x75, 0x83, 0x84]
-plain = ''.join(chr((b - 0x10) & 0xff) for b in cipher)
+plain = ''.join(chr((b - key) & 0xff) for b in cipher)
 print(plain)
 ```
-
-Pokud známe výsledek a chceme získat původní vstup, provádíme opačnou operaci, tedy odečtení.
 
 ### Odčítání nad bajty
 
 ```c
-out[i] = (input[i] - 3) & 0xff;
+out[i] = input[i] - key;
 ```
 
 Python:
 
 ```python
 cipher = [0x74, 0x62, 0x6f, 0x64]
-plain = ''.join(chr((b + 3) & 0xff) for b in cipher)
+plain = ''.join(chr((b + key) & 0xff) for b in cipher)
 print(plain)
 ```
 
@@ -54,30 +55,31 @@ print(plain)
 Operace AND se používá pro maskování bitů:
 
 ```c
-out[i] = input[i] & 0x7f;
+out[i] = input[i] & key;
 ```
 
 Python:
 
 ```python
 data = [0xf4, 0xe5, 0xf3, 0xf4]
-masked = ''.join(chr(b & 0x7f) for b in data)
+masked = ''.join(chr(b & key) for b in data)
 print(masked)
 ```
 
-Je třeba počítat s tím, že AND bývá částečně nevratná operace — pokud maska maže bity, původní hodnotu již nemusí být možné jednoznačně rekonstruovat.
+> [!WARNING]
+> Je třeba počítat s tím, že AND bývá částečně nevratná operace - pokud maska maže bity, původní hodnotu již nemusí být možné jednoznačně rekonstruovat.
 
 ### OR
 
 ```c
-out[i] = input[i] | 0x20;
+out[i] = input[i] | key;
 ```
 
 Python:
 
 ```python
 data = [0x41, 0x42, 0x43]
-result = ''.join(chr(b | 0x20) for b in data)
+result = ''.join(chr(b | key for b in data)
 print(result)
 ```
 
@@ -86,14 +88,14 @@ Tato operace se často používá například pro převod velkých písmen na ma
 ### Bitové posuny
 
 ```c
-out[i] = input[i] << 1;
+out[i] = input[i] << key;
 ```
 
 Python:
 
 ```python
 data = [0x21, 0x22, 0x23]
-shifted = [(b << 1) & 0xff for b in data]
+shifted = [(b << key) & 0xff for b in data]
 print([hex(x) for x in shifted])
 ```
 
