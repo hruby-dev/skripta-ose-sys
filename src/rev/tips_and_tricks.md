@@ -17,7 +17,6 @@ Nejčastější operace jsou:
 
 Při analýze je důležité pamatovat na to, že se často pracuje pouze s jedním bajtem, tedy v rozsahu `0x00` až `0xff`.
 
-> [!NOTE]
 > V jazyce C dochází při práci s typem char nebo unsigned char k implicitnímu přetečení (wrap-around). V jazycích jako Python je však nutné toto chování simulovat explicitně, typicky pomocí maskování & 0xff.
 
 ### Sčítání nad bajty
@@ -66,7 +65,6 @@ masked = ''.join(chr(b & key) for b in data)
 print(masked)
 ```
 
-> [!WARNING]
 > Je třeba počítat s tím, že AND bývá částečně nevratná operace - pokud maska maže bity, původní hodnotu již nemusí být možné jednoznačně rekonstruovat.
 
 ### OR
